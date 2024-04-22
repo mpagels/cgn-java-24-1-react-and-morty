@@ -1,6 +1,6 @@
 import "./App.css"
 import axios from "axios";
-import {useEffect, useState} from "react";
+import {ChangeEvent, useEffect, useState} from "react";
 import CharacterCard from "./components/CharacterCard.tsx";
 
 
@@ -16,6 +16,13 @@ export type Character = {
 function App() {
 
     const [characters, setCharacters] = useState<Character[]>([])
+    const [input, setInput] = useState<string>("")
+
+
+    function handleOnChangeInput(event: ChangeEvent<HTMLInputElement>) {
+        setInput(event.target.value)
+    }
+
 
     function getCharacters() {
         axios.get("https://rickandmortyapi.com/api/character").then(response => setCharacters(response.data.results))
@@ -27,8 +34,11 @@ function App() {
 
     <>
         <h1>React and Morty</h1>
+        <input type={"text"} onChange={handleOnChangeInput} value={input}/>
         <ul>
-        {characters.map((character: Character) => {
+        {characters.filter(character => {
+            return character.name.toLowerCase().includes(input.toLowerCase()) // true or false
+        }).map((character: Character) => {
             return <CharacterCard key={character.id} character={character} />
         })}
         </ul>
