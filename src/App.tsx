@@ -1,8 +1,5 @@
 import "./App.css"
-import axios from "axios";
-import {ChangeEvent, useEffect, useState} from "react";
-import CharacterCard from "./components/CharacterCard.tsx";
-import StatusSelect from "./components/StatusSelect.tsx";
+
 import {Route, Routes} from "react-router-dom";
 import StartPage from "./pages/startPage.tsx";
 import CharactersPage from "./pages/charactersPage.tsx";

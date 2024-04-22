@@ -14,3 +14,19 @@ ul {
     gap: 20px;
     justify-content: center;
 }
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+span {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
